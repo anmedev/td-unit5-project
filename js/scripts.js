@@ -6,12 +6,14 @@ FSJS Project 5 - Public API Requests
 const galleryDiv = document.querySelector("#gallery");
 galleryDiv.innerHTML = "";
 
+// Create an empty array for the employee data.
 let employees = [];
 
+// Fetches data of 12 random users from the Random User Generator API.
 async function getEmployees() {
   try {
   const response = await fetch("https://randomuser.me/api/?results=12&nat=us")
-  if (!response.ok) throw new Error('something went wrong');
+  if (!response.ok) throw new Error('Something went wrong!');
   const data = await response.json();
   employees.push(...data.results);
   for (let i = 0; i < employees.length; i++) {
@@ -54,6 +56,10 @@ getEmployees();
         })
       }
 
+  /**
+ * Displays a modal window for each specific employee when their card is clicked.
+ * @param {array} employee - An array of objects containing employee data.
+ */
   function displayEmployeeModal(employee) {
       let  dob = new Date(employee.dob.date);
       let formatted = `${dob.getMonth() + 1}/${dob.getDate()}/${dob.getFullYear()}`;
@@ -68,7 +74,8 @@ getEmployees();
               <p class="modal-text cap">${employee.location.city}</p>
               <hr>
               <p class="modal-text">${employee.phone}</p>
-              <p class="modal-text">${employee.location.street.number} ${employee.location.street.name}., ${employee.location.city}, ${employee.location.state} ${employee.location.postcode}</p>
+              <p class="modal-text">${employee.location.street.number} ${employee.location.street.name}., ${employee.location.city}, ${employee.location.state}
+              ${employee.location.postcode}</p>
               <p class="modal-text">Birthday: ${formatted}</p>
             </div>
           </div>
