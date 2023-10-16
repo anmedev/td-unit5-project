@@ -25,11 +25,11 @@ fetch("https://randomuser.me/api/?results=12")
         <div class="card-info-container">
           <h3 id="name" class="card-name cap">${employees[i].name.first} ${employees[i].name.last}</h3>
           <p class="card-text">${employees[i].email}</p>
-      <p class="card-text cap">${employees[i].location.city}, ${employees[i].location.state}</p>
-    </div>
-  </div>
-  `
-  galleryDiv.insertAdjacentHTML('beforeend', galleryHTML);
+          <p class="card-text cap">${employees[i].location.city}, ${employees[i].location.state}</p>
+        </div>
+      </div>
+      `
+      galleryDiv.insertAdjacentHTML('beforeend', galleryHTML);
     }
   };
 
